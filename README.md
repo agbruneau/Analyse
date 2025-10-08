@@ -1,2 +1,2 @@
 # Analyse
-Analyse de thématiques d'intérêts réaliser à l'aide de Google Gemini Ultra
+Analyse de thématiques d'intérêts réaliser à l'aide de Google Gemini Pro
