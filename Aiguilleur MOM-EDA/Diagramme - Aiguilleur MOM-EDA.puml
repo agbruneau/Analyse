@@ -1,0 +1,116 @@
+@startuml
+!theme mars
+' Configuration globale du style
+skinparam activity {
+  BackgroundColor #DDEEFF
+  BorderColor #4477BB
+  FontColor #333333
+  FontSize 14
+  FontName "Arial"
+
+  StartColor #AAFFCC
+  EndColor #FF9999
+
+  DiamondBackgroundColor #CCEEFF
+  DiamondBorderColor #77CCFF
+
+  ArrowColor #4477BB
+  ArrowFontColor #4477BB
+  ArrowFontSize 12
+}
+
+skinparam note {
+  BackgroundColor #FFFFCC
+  BorderColor #FFCC66
+  FontColor #333333
+  FontSize 12
+  FontName "Arial"
+}
+
+title "Aiguilleur de Sélection des Patrons d'Architecture\n(MOM vs EDA)"
+
+start
+
+partition "Étape 1: Définir le Paradigme Principal" {
+  note right: Caractériser la nature du flux de données
+  
+  :**Question 1:** Quelle est la nature fondamentale de vos données en transit ?;
+
+  if (Flux continu, volumineux, de faits (événements) ? \n(Relecture, analyse temps réel, flux de données)) then (Oui)
+    #lightblue:**Orientation:** Architecture Orientée Événements (EDA)\n(Kafka / Confluent Cloud);
+    note right: Ex: Clics utilisateurs, lectures capteurs IoT,\ntransactions financières brutes
+    
+    partition "Patrons EDA (Kafka / Confluent Cloud)" {
+      :**Question 2:** Comment gérer la cohérence distribuée et l'état ?;
+      if (Nécessité de reconstruire l'état à partir d'événements passés ? \n(Vérité = séquence d'événements)) then (Oui)
+        #lightgreen:**Patron:** Approvisionnement en Événements (Event Sourcing);
+        note right: **Cas d'usage:** Suivi Commandes E-commerce, IoT
+        
+        :**Question 3:** Besoin de vues de lecture optimisées et découplées de l'écriture ?;
+        if (Oui) then ( )
+          #lightgreen:**Patron:** CQRS (Command Query Responsibility Segregation);
+          note right: **Cas d'usage:** Suivi Commandes E-commerce (API de consultation, tableau de bord)
+        endif
+
+        :**Question 4:** Transactions métier sur plusieurs microservices sans 2PC ?;
+        if (Oui) then ( )
+          #lightgreen:**Patron:** Saga (Chorégraphie ou Orchestration);
+          note right: **Cas d'usage:** Traitement de commande multi-étapes (paiement, inventaire, expédition)
+        endif
+      endif
+
+      :**Question 5:** Comment diffuser l'information à de multiples consommateurs ?;
+      #lightgreen:**Patron:** Publication/Abonnement en Éventail (Fan-out);
+      note right: **Cas d'usage:** Notifications, BI, détection fraude (consomment le même flux d'événements)
+
+      :**Question 6:** Comment gérer les messages qui ne peuvent être traités ?;
+      #lightgreen:**Patron:** File d'attente de Messages non Traitables (DLQ);
+      note right: **Cas d'usage:** Capteurs IoT mal formés, événements corrompus
+
+      :**Question 7:** Quelles sont les exigences de scalabilité et de disponibilité ?;
+      #lightgreen:**Kafka offre une Scalabilité et HA Natives** (via partitions et réplication);
+      note right: **Bénéfices:** Gestion des très hauts volumes (IoT), résilience par défaut.
+    }
+    
+  else (Non: Messages discrets, ciblés, transactionnels ? \n(Livraison garantie, sémantique transactionnelle individuelle))
+    #lightblue:**Orientation:** Messagerie Orientée Messages (MOM)\n(IBM MQ);
+    note right: Ex: Ordres de bourse, messages de paiement bancaires,\nfichiers clients
+
+    partition "Patrons MOM (IBM MQ)" {
+      :**Question 2:** Comment les applications doivent-elles interagir ?;
+      if (Un émetteur -> un seul récepteur, traitement unique ?) then (Point à Point)
+        #lightgreen:**Patron:** Point à Point;
+        note right: **Cas d'usage:** Ordres de bourse, Paiements bancaires
+
+        :**Question 3:** L'émetteur attend une réponse spécifique à sa requête, \nde manière asynchrone ?;
+        if (Oui) then ( )
+          #lightgreen:**Patron:** Requête/Réponse;
+          note right: **Cas d'usage:** Statut d'un ordre de bourse, interrogation distante
+        endif
+      else (Un émetteur -> plusieurs récepteurs ?)
+        #lightgreen:**Patron:** Publication/Abonnement;
+        note right: **Cas d'usage:** Notifications internes (état paiement), diffusion d'alertes
+      endif
+
+      :**Question 4:** Comment assurer la scalabilité et la gestion des flux complexes ?;
+      #lightgreen:**Patron:** Cluster IBM MQ;
+      note right: **Cas d'usage:** Répartir la charge des ordres de bourse, simplifier l'intégration multi-systèmes
+
+      :**Question 5:** Comment garantir la haute disponibilité du service de messagerie ?;
+      if (Redondance Actif/Passif avec stockage partagé ?) then (Multi-Instances)
+        #lightgreen:**Patron:** Gestionnaires de Files d'Attente Multi-Instances;
+        note right: **Cas d'usage:** Ordres de bourse, paiements interbancaires (sur VM/bare-metal)
+      else (Haute disponibilité native pour conteneurs (Kubernetes) ?)
+        #lightgreen:**Patron:** Native HA (pour conteneurs);
+        note right: **Cas d'usage:** Paiements interbancaires sur plateformes cloud natives
+      endif
+
+      :**Question 6:** Comment gérer les messages bloqués ou non délivrés ?;
+      #lightgreen:**Patron:** File d'attente de Messages non Traitables (DLQ);
+      note right: **Cas d'usage:** Messages de paiement mal formés, erreurs d'acheminement
+    }
+  endif
+}
+
+stop
+@enduml
