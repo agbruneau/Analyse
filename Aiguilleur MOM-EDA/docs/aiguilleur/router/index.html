@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="doc2go">
+    <link href="../../_/css/main.css" rel="stylesheet" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../_/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../_/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../_/icons/favicon-16x16.png">
+    <link rel="shortcut icon" href="../../_/icons/favicon.ico"><title>router</title>
+</head>
+  <body>
+    <nav>
+        <a href="..">aiguilleur</a>/router<span class="navbar-right">
+          <a href="../..">Root</a> | <a href="#pkg-index">Index</a></span>
+      </nav>
+    <main><h2 id="pkg-overview">package router</h2>
+<pre class="chroma"><span class="kn">import</span> <span class="s">&#34;aiguilleur/router&#34;</span></pre>
+<p>Package router fournit un simple routeur de messages.
+<h3 id="pkg-index">Index</h3>
+<ul>
+  <li>
+      <a href="#Message">type Message</a>
+      </li>
+  <li>
+      <a href="#Routeur">type Routeur</a>
+      <ul>
+          <li><a href="#NouveauRouteur">func NouveauRouteur() *Routeur</a></li>
+          <li><a href="#Routeur.EnregistrerGestionnaire">func (r *Routeur) EnregistrerGestionnaire(messageType string, handler func(Message))</a></li>
+          <li><a href="#Routeur.RouterMessage">func (r *Routeur) RouterMessage(messageType string, message Message)</a></li>
+          </ul>
+      </li>
+  </ul><h3 id="pkg-types">Types</h3>
+  <h3 id="Message">type Message</h3>
+    <pre class="chroma"><span class="kd">type</span> <span class="nx">Message</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span id="Message.Contenu"><span class="nx">Contenu</span></span> <a href="https://pkg.go.dev/builtin#string"><span class="kt">string</span></a>
+<span class="p">}</span></pre>
+    <p>Message représente un message simple avec un contenu.
+<h3 id="Routeur">type Routeur</h3>
+    <pre class="chroma"><span class="kd">type</span> <span class="nx">Routeur</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="c1">// contains filtered or unexported fields</span>
+<span class="p">}</span></pre>
+    <p>Routeur représente un routeur de messages qui peut enregistrer des gestionnaires pour des types de messages spécifiques.
+<h4 id="NouveauRouteur">func NouveauRouteur</h4>
+  <pre class="chroma"><span class="kd">func</span> <span class="nf">NouveauRouteur</span><span class="p">()</span> <span class="o">*</span><a href="#Routeur"><span class="nx">Routeur</span></a></pre>
+  <p>NouveauRouteur crée une nouvelle instance de Routeur.
+<h4 id="Routeur.EnregistrerGestionnaire">func (*Routeur) EnregistrerGestionnaire</h4>
+  <pre class="chroma"><span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="o">*</span><a href="#Routeur"><span class="nx">Routeur</span></a><span class="p">)</span> <span class="nf">EnregistrerGestionnaire</span><span class="p">(</span><span class="nx">messageType</span> <a href="https://pkg.go.dev/builtin#string"><span class="kt">string</span></a><span class="p">,</span> <span class="nx">handler</span> <span class="kd">func</span><span class="p">(</span><a href="#Message"><span class="nx">Message</span></a><span class="p">))</span></pre>
+  <p>EnregistrerGestionnaire enregistre une fonction de gestionnaire pour un type de message spécifique.
+<h4 id="Routeur.RouterMessage">func (*Routeur) RouterMessage</h4>
+  <pre class="chroma"><span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="o">*</span><a href="#Routeur"><span class="nx">Routeur</span></a><span class="p">)</span> <span class="nf">RouterMessage</span><span class="p">(</span><span class="nx">messageType</span> <a href="https://pkg.go.dev/builtin#string"><span class="kt">string</span></a><span class="p">,</span> <span class="nx">message</span> <a href="#Message"><span class="nx">Message</span></a><span class="p">)</span></pre>
+  <p>RouterMessage achemine un message vers le gestionnaire approprié en fonction de son type.
+</main>
+    <hr>
+    <footer>
+      <small id="generated-by-footer">
+        Generated with <a href="https://abhinav.github.io/doc2go/">doc2go</a>
+      </small>
+    </footer>
+    <script src="../../_/js/permalink.js"></script></body>
+</html>
