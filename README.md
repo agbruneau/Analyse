@@ -1,4 +1,4 @@
-# Cursurs dans le domaine des sciences et génie de l'Informatique
+# Cursus dans le domaine des sciences et génie de l'Informatique
 
 - **Volume Ia** : Fondations Théoriques de l'Informatique
 - **Volume Ib** : Machine de Turing
