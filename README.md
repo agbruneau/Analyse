@@ -14,9 +14,7 @@ Les documents sont organisés en plusieurs volumes :
 - **Volume V** : Intelligence Artificielle et Domaines Spécialisés
 - **Volume VI** : Technologies Avant-Garde
 
-## Technologies d'Avant-Garde
-
-10 tendances 2026 en Intelligence Artificielle :
+## Tendances 2026 en Intelligence Artificielle
 
 1.  **Orchestration Multiagents** : Des équipes d’agents IA collaborent sous une couche de coordination (orchestrateur). Un agent peut planifier, d’autres exécuter des tâches (code, API), et un agent critique évalue les résultats.
 2.  **Main-d'œuvre numérique (Digital Labor)** : Agents autonomes interprétant des entrées multimodales, d’exécuter des flux de travail et de s’intégrer à des systèmes en aval, avec une supervision humaine (human-in-the-loop).
