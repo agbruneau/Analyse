@@ -1,10 +1,4 @@
-# Encyclopédie de l'Informatique
-
-Ce dépôt contient une collection de volumes couvrant divers aspects de l'informatique, des fondations théoriques aux technologies d'avant-garde.
-
-## Contenu de la collection
-
-Les documents sont organisés en plusieurs volumes :
+# Cursurs dans le domaine des sciences et génie de l'Informatique
 
 - **Volume Ia** : Fondations Théoriques de l'Informatique
 - **Volume Ib** : Machine de Turing
