@@ -1,14 +1,22 @@
 # Cursus en science et génie de l'Informatique
 
-- **Volume Ia** : Fondations Théoriques de l'Informatique
-- **Volume Ib** : Machine de Turing
-- **Volume II** : Architecture et Ingénierie Matérielle
-- **Volume III** : Systèmes Logiciels et Méthodologies
-- **Volume IV** : Données, Réseaux et Sécurité
-- **Volume V** : Intelligence Artificielle et Domaines Spécialisés
-- **Volume VI** : Technologies Avant-Garde
+Ce dépôt contient les ressources pour le cursus complet en science et génie de l'informatique, structuré en plusieurs volumes thématiques.
 
-## Tendances 2026 en Intelligence Artificielle
+## Volumes du Cursus
+
+| Volume         | Titre                                             | Fichier                                                                                             |
+| :------------- | :------------------------------------------------ | :-------------------------------------------------------------------------------------------------- |
+| **Volume Ia**  | Fondations Théoriques de l'Informatique           | [Consulter (PDF)](./Volume%20Ia%20-%20Fondations%20Théoriques%20de%20l'Informatique.pdf)            |
+| **Volume Ib**  | Machine de Turing                                 | [Consulter (PDF)](./Volume%20Ib%20-%20Machine%20de%20Turing.pdf)                                    |
+| **Volume II**  | Architecture et Ingénierie Matérielle             | [Consulter (PDF)](./Volume%20II%20-%20Architecture%20et%20Ingénierie%20Matérielle.pdf)              |
+| **Volume III** | Systèmes Logiciels et Méthodologies               | [Consulter (PDF)](./Volume%20III%20-%20Systèmes%20Logiciels%20et%20Méthodologies.pdf)               |
+| **Volume IV**  | Données, Réseaux et Sécurité                      | [Consulter (PDF)](./Volume%20IV%20-%20Données%20Réseaux%20et%20Sécurité.pdf)                        |
+| **Volume V**   | Intelligence Artificielle et Domaines Spécialisés | [Consulter (PDF)](./Volume%20V%20-%20Intelligence%20Artificielle%20et%20Domaines%20Spécialisés.pdf) |
+| **Volume VI**  | Technologies Avant-Garde                          | [Consulter (PDF)](./Volume%20VI%20-%20Technologies%20Avant-Garde.pdf)                               |
+
+---
+
+## [Tendances 2026 en Intelligence Artificielle](./Tendances%202026%20Intelligence%20Artificielle.pdf)
 
 1.  **Orchestration Multiagents** : Des équipes d’agents IA collaborent sous une couche de coordination (orchestrateur). Un agent peut planifier, d’autres exécuter des tâches (code, API), et un agent critique évalue les résultats.
 2.  **Main-d'œuvre numérique (Digital Labor)** : Agents autonomes interprétant des entrées multimodales, d’exécuter des flux de travail et de s’intégrer à des systèmes en aval, avec une supervision humaine (human-in-the-loop).
